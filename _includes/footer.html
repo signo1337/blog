@@ -1,21 +1,24 @@
-<div class="page__footer-follow">
-  <ul class="social-icons">
-    {% if site.data.ui-text[site.locale].follow_label %}
-      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
-    {% endif %}
+<div class="footer-col-wrapper" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #333;">
+  
+  <div class="footer-col">
+    <h4 style="margin-bottom: 10px; color: #fff;">Support the Blog</h4>
+    
+    <p style="margin-bottom: 8px;">
+      <span style="font-size: 0.9em; color: #aaa;">Lightning ⚡</span><br>
+      <a href="lightning:signolabz@blink.sv" style="color: #fca311; font-family: monospace; text-decoration: none;">
+        signolabz@blink.sv
+      </a>
+    </p>
 
-    {% if site.footer.links %}
-      {% for link in site.footer.links %}
-        {% if link.label and link.url %}
-          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label }}</a></li>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
+    <details>
+      <summary style="cursor: pointer; color: #aaa; font-size: 0.9em;">Show Bitcoin Address ▼</summary>
+      <div style="margin-top: 10px; background: #fff; padding: 10px; border-radius: 4px; max-width: 200px;">
+        <img src="/assets/images/btc-qr.png" alt="BTC QR" style="width: 100%; display: block;">
+        <div style="font-family: monospace; color: #000; font-size: 0.7em; word-break: break-all; margin-top: 5px; user-select: all;">
+          bc1q6zwgj2m3tzkaeqy5fvu89lhlpp3zw8ec0xg2uk
+        </div>
+      </div>
+    </details>
+  </div>
 
-    {% unless site.atom_feed.hide %}
-      <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
-    {% endunless %}
-  </ul>
 </div>
-
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} <a href="{{ site.copyright_url | default: site.url }}">{{ site.copyright | default: site.title }}</a>. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
