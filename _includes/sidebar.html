@@ -1,29 +1,19 @@
-<div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid #e2e2e2; font-size: 0.8rem;">
-  
-  <h4 style="margin-bottom: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Support</h4>
-
-  <div style="margin-bottom: 15px;">
-    <span style="display:block; color: #999; margin-bottom: 4px;">Lightning ⚡</span>
-    <a href="lightning:signolabz@blink.sv" style="text-decoration: none; color: #fca311; font-family: monospace; font-weight: bold; background: #333; padding: 4px 8px; border-radius: 4px; display: inline-block;">
-      signolabz@blink.sv
-    </a>
+{% if page.author_profile or layout.author_profile or page.sidebar %}
+  <div class="sidebar sticky">
+  {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
+  {% if page.sidebar %}
+    {% for s in page.sidebar %}
+      {% if s.image %}
+        <img src="{{ s.image | relative_url }}"
+             alt="{% if s.image_alt %}{{ s.image_alt }}{% endif %}">
+      {% endif %}
+      {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
+      {% if s.text %}{{ s.text | markdownify }}{% endif %}
+      {% if s.nav %}{% include nav_list nav=s.nav %}{% endif %}
+    {% endfor %}
+    {% if page.sidebar.nav %}
+      {% include nav_list nav=page.sidebar.nav %}
+    {% endif %}
+  {% endif %}
   </div>
-
-  <div>
-    <span style="display:block; color: #999; margin-bottom: 4px;">Bitcoin ₿</span>
-    <details>
-      <summary style="cursor: pointer; color: #333; font-weight: bold;">
-        Show Address ▼
-      </summary>
-      
-      <div style="margin-top: 10px; border: 1px solid #eee; padding: 10px; border-radius: 5px; background: #fff;">
-        <img src="/assets/images/btc-qr.png" alt="BTC QR" style="max-width: 100%; height: auto; display: block; margin: 0 auto 10px auto;">
-        
-        <div style="font-family: monospace; font-size: 0.7em; word-break: break-all; color: #333; user-select: all; cursor: text; background: #f9f9f9; padding: 5px;">
-          bc1q6zwgj2m3tzkaeqy5fvu89lhlpp3zw8ec0xg2uk
-        </div>
-      </div>
-    </details>
-  </div>
-
-</div>
+{% endif %}
