@@ -1,26 +1,29 @@
-<div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid #e2e2e2;">
-      <h3>Value 4 Value</h3>
+<div style="margin-top: 2em; padding-top: 1em; border-top: 1px solid #e2e2e2; font-size: 0.8rem;">
+  
+  <h4 style="margin-bottom: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Support</h4>
+
+  <div style="margin-bottom: 15px;">
+    <span style="display:block; color: #999; margin-bottom: 4px;">Lightning ⚡</span>
+    <a href="lightning:signolabz@blink.sv" style="text-decoration: none; color: #fca311; font-family: monospace; font-weight: bold; background: #333; padding: 4px 8px; border-radius: 4px; display: inline-block;">
+      signolabz@blink.sv
+    </a>
+  </div>
+
+  <div>
+    <span style="display:block; color: #999; margin-bottom: 4px;">Bitcoin ₿</span>
+    <details>
+      <summary style="cursor: pointer; color: #333; font-weight: bold;">
+        Show Address ▼
+      </summary>
       
-      <div style="margin-bottom: 10px; text-align: center;">
-        <a href="lightning:signolabz@blink.sv" style="text-decoration: none; border-bottom: none;">
-          <code style="font-size: 0.85em; background: #f3f3f3; padding: 4px 8px; border-radius: 4px; color: #333;">⚡ signolabz@blink.sv</code>
-        </a>
+      <div style="margin-top: 10px; border: 1px solid #eee; padding: 10px; border-radius: 5px; background: #fff;">
+        <img src="/assets/images/btc-qr.png" alt="BTC QR" style="max-width: 100%; height: auto; display: block; margin: 0 auto 10px auto;">
+        
+        <div style="font-family: monospace; font-size: 0.7em; word-break: break-all; color: #333; user-select: all; cursor: text; background: #f9f9f9; padding: 5px;">
+          bc1q6zwgj2m3tzkaeqy5fvu89lhlpp3zw8ec0xg2uk
+        </div>
       </div>
+    </details>
+  </div>
 
-      {% include blink-widget.html container_id="blink-sidebar" %}
-
-      <div style="margin-top: 15px;">
-        <details style="font-size: 0.85em; color: #666; cursor: pointer;">
-          <summary><strong>Or on-chain BTC ➔</strong></summary>
-          
-          <div style="margin-top: 10px; text-align: center; background: #f9f9f9; padding: 10px; border-radius: 5px; border: 1px solid #eee;">
-            <img src="/assets/images/btc-qr.png" alt="BTC QR" style="max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 5px;">
-            
-            <div style="font-family: monospace; font-size: 0.75em; word-break: break-all; color: #333; user-select: all; cursor: text;">
-              bc1q6zwgj2m3tzkaeqy5fvu89lhlpp3zw8ec0xg2uk
-            </div>
-            <small style="display:block; margin-top:5px; font-size: 0.7em; color: #999;">Only send BTC (Bitcoin Network)</small>
-          </div>
-        </details>
-      </div>
-    </div>
+</div>
