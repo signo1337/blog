@@ -1,6 +1,6 @@
 ---
 title: 'SafeLine WAF: A self-hosted, open-source Web Application Firewall'
-date: '2025-05-05 22:54:13'
+date: '2025-05-06 04:54:13'
 permalink: >-
   /post/safeline-waf-a-selfhosted-opensource-web-application-firewall-z2nexvu.html
 tags:
@@ -10,7 +10,6 @@ tags:
 categories:
   - selfhosting
 layout: single
-published: true
 ---
 
 
@@ -49,11 +48,3 @@ published: true
 In my opinion, one of the most beneficial features is the option to add an additional security layer to any web application, for example through the use of OIDC. This in turn enables you to enforce MFA on an application that does not support it natively (for example Immich Google Photos alternative or the SiYuan note taking app).
 
 Install guide on Synology NAS and more posts on how to use it are in the pipeline - stay tuned!
-
----
-
-If you like my work and would like to support it, feel free to make a donation of any amount in USDT (TRC-20 Network ONLY) to the following address:
-
-​`TKtyyfWBF7cympu2mELRNSEViooD65XEVs`​
-
-![usdt_address](/assets/images/usdt_address-20250505210352-ov0ohqk.jpg)
