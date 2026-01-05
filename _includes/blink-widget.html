@@ -1,0 +1,29 @@
+<div id="{{ include.container_id | default: 'blink-pay-button-sidebar' }}"></div>
+
+<script src="https://blinkbitcoin.github.io/donation-button.blink.sv/js/blink-pay-button.js"></script>
+<script>
+  function init{{ include.container_id | replace: '-', '_' }}() {
+    if (typeof BlinkPayButton !== 'undefined') {
+      BlinkPayButton.init({
+        username: 'signolabz',
+        containerId: '{{ include.container_id | default: "blink-pay-button-sidebar" }}',
+        themeMode: 'dark',
+        language: 'en',
+        defaultAmount: 1000,
+        supportedCurrencies: [
+           { "code": "sats", "name": "sats", "isCrypto": true },
+           { "code": "USD", "name": "USD", "isCrypto": false }
+        ],
+        debug: false
+      });
+    } else {
+      setTimeout(init{{ include.container_id | replace: '-', '_' }}, 100);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init{{ include.container_id | replace: '-', '_' }});
+  } else {
+    init{{ include.container_id | replace: '-', '_' }}();
+  }
+</script>
