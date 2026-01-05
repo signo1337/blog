@@ -1,6 +1,6 @@
 ---
 title: Install Garage S3 Storage on Synology NAS
-date: '2025-05-06 06:44:32'
+date: '2025-05-06 12:44:32'
 permalink: /post/install-garage-s3-storage-on-synology-nas-z1w6fnr.html
 tags:
   - garage
@@ -9,7 +9,6 @@ tags:
 categories:
   - selfhosting
 layout: single
-published: true
 ---
 
 
@@ -22,9 +21,9 @@ In this guide, I will explain how to install Garage ([https://garagehq.deuxfleur
 
 First of all, you will need to create the following folder structure on your Syno:
 
-* /volume1/docker/garage
-* /volume1/docker/garage/meta
-* /volume1/docker/garage/data
+- /volume1/docker/garage
+- /volume1/docker/garage/meta
+- /volume1/docker/garage/data
 
 ## Create garage.toml
 
@@ -94,11 +93,11 @@ Before you can use it as an S3 storage, you need to run some commands inside of 
 
 SSH into your NAS, and paste this command:
 
-​`alias garage="docker exec -ti <container name> /garage"`​
+​`alias garage="docker exec -ti <container name> /garage"`
 
-This creates an alias for the further commands. You can also skip the command and use `docker exec -ti <container name> /garage`​ before every command instead.
+This creates an alias for the further commands. You can also skip the command and use `docker exec -ti <container name> /garage` before every command instead.
 
-To test if everything worked, you can now run `garage status`​ and should see something like this:
+To test if everything worked, you can now run `garage status` and should see something like this:
 
 ```shell
 ==== HEALTHY NODES ====
@@ -108,29 +107,29 @@ ID                 Hostname  Address         Tag                   Zone  Capacit
 
 Let's create now a cluster layout, by entering this command, whereas the node_id corresponds to the Zone ID (output from previous command):
 
-​`garage layout assign -z dc1 -c 1G <node_id>`​
+​`garage layout assign -z dc1 -c 1G <node_id>`
 
-*  *-c* denotes the capacity you want to assign to this bucket. Completely up to you. I'd go with something between 10G and 100G for SiYuan (note taking app) as an example, depending on your needs
+-  *-c* denotes the capacity you want to assign to this bucket. Completely up to you. I'd go with something between 10G and 100G for SiYuan (note taking app) as an example, depending on your needs
 
-*  *-z dc1* -> an abbreviation for the zone you are creating, here for example short for datacenter1 (can be anything)
+-  *-z dc1* -> an abbreviation for the zone you are creating, here for example short for datacenter1 (can be anything)
 
 After this, the layout has to be applied with:
 
-​`garage layout apply --version 1`​
+​`garage layout apply --version 1`
 
 ## Creating Bucket and Key
 
 Let's assume we want to create a bucket to store SiYuan notes we can create a bucket like this:
 
-​`garage bucket create siyuan-notes`​
+​`garage bucket create siyuan-notes`
 
 To verify that the bucket is created, we run:
 
-​`garage bucket list`​ and `garage bucket info siyuan-notes`​
+​`garage bucket list`​ and `garage bucket info siyuan-notes`
 
 The next step is to create and assign an API-key:
 
-​`garage key create siyuan-key`​
+​`garage key create siyuan-key`
 
 The output should show a Key ID and a Secret Key, with empty Authorized Buckets (we will authorize the siyuan-notes bucket in the next steps).
 
@@ -143,20 +142,10 @@ garage key info siyuan-key
 
 Authorize the bucket:
 
-​`garage bucket allow --read --write --owner siyuan-notes --key siyuan-key`​
+​`garage bucket allow --read --write --owner siyuan-notes --key siyuan-key`
 
 Next we run this command again, this time the Authorized Buckets should not be empty anymore:
 
-​`garage bucket info siyuan-notes`​
+​`garage bucket info siyuan-notes`
 
 The bucket is now ready to be filled with whatever data you choose. For a guide on how to connect SiYuan to your bucket, stay tuned for my next post.
-
----
-
-If you like my work and would like to support it, feel free to make a donation of any amount in USDT (TRC-20 Network ONLY) to the following address:​​
-
-​`TKtyyfWBF7cympu2mELRNSEViooD65XEVs`​
-
-![usdt_address](/assets/images/usdt_address-20250505210352-ov0ohqk.jpg)
-
-‍
