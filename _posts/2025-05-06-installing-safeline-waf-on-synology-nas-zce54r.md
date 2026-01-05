@@ -1,6 +1,6 @@
 ---
 title: Installing SafeLine WAF on Synology NAS
-date: '2025-05-05 22:18:09'
+date: '2025-05-06 04:18:09'
 permalink: /post/installing-safeline-waf-on-synology-nas-zce54r.html
 tags:
   - synology
@@ -11,7 +11,6 @@ tags:
 categories:
   - selfhosting
 layout: single
-published: true
 ---
 
 
@@ -28,9 +27,9 @@ Furthermore, the automatic certificate creation in SafeLine WAF, requires port 8
 
 # Installation
 
-* The first step is to create a folder in the location of your choice, like /volume1/docker/safeline.
+- The first step is to create a folder in the location of your choice, like /volume1/docker/safeline.
 
-* Create a stack with the following compose:
+- Create a stack with the following compose:
 
 ```yaml
 networks:
@@ -178,7 +177,7 @@ services:
 
 ```
 
-* add the following variables to your stack env variables:
+- add the following variables to your stack env variables:
 
 ```yaml
 SAFELINE_DIR=/volume1/docker/safeline
@@ -192,11 +191,11 @@ RELEASE=
 REGION=-g
 ```
 
-* Deploy and enjoy!
+- Deploy and enjoy!
 
-* Continue to *https://your-nas-ip:chosen-mgt-port* and set up
+- Continue to *https://your-nas-ip:chosen-mgt-port* and set up
 
-* To get new login credentials, run this command on your NAS:
+- To get new login credentials, run this command on your NAS:
 
 ```shell
 docker exec safeline-mgt resetadmin
@@ -205,11 +204,3 @@ docker exec safeline-mgt resetadmin
 Find more information on:
 
 [https://docs.waf.chaitin.com/en/GetStarted/Deploy](https://docs.waf.chaitin.com/en/GetStarted/Deploy)
-
----
-
-If you like my work and would like to support it, feel free to make a donation of any amount in USDT (TRC-20 Network ONLY) to the following address:
-
-​`TKtyyfWBF7cympu2mELRNSEViooD65XEVs`​
-
-![usdt_address](/assets/images/usdt_address-20250505210352-ov0ohqk.jpg)
