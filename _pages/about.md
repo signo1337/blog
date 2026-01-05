@@ -15,11 +15,4 @@ Feel free to explore the posts and connect!
 
 ## Support This Blog
 
-If you find the guides and content on this site helpful or valuable, please consider supporting its upkeep and future content creation. Donations can be made via USDT. Thank you for your support!
-
-**USDT Address (TRC20 network only, other crypto currency addresses on request):**
-`TKtyyfWBF7cympu2mELRNSEViooD65XEVs`
-
-![USDT Donation QR Code](/assets/images/usdt_address.jpg)
-
-*(Please double-check the address and network before sending any funds.)*
+If you find the guides and content on this site helpful or valuable, please consider supporting its future content creation.
