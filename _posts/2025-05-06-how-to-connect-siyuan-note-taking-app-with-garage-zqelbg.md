@@ -1,6 +1,6 @@
 ---
 title: How to Connect SiYuan Note Taking App With Garage
-date: '2025-05-06 07:27:52'
+date: '2025-05-06 13:27:52'
 permalink: /post/how-to-connect-siyuan-note-taking-app-with-garage-zqelbg.html
 tags:
   - siyuan
@@ -9,7 +9,6 @@ tags:
 categories:
   - selfhosting
 layout: single
-published: true
 ---
 
 
@@ -20,21 +19,13 @@ In a previous guide, I explained how to install Garage S3 Storage on your Synolo
 
 Open SiYuan and head over to settings -> cloud and enter your details.
 
-* Endpoint: use your domain name or your IP address and port if accessing from within your LAN
-* Access Key and Secret Key: as per your set up (key and ID created in the previous guide, for example)
-* Bucket: your bucket name, e.g. siyuan-notes as per previous guide
-* Region ID: your region ID (relating to my previous guide, you find this information in the garage.toml file, [s3_api]  
+- Endpoint: use your domain name or your IP address and port if accessing from within your LAN
+- Access Key and Secret Key: as per your set up (key and ID created in the previous guide, for example)
+- Bucket: your bucket name, e.g. siyuan-notes as per previous guide
+- Region ID: your region ID (relating to my previous guide, you find this information in the garage.toml file, [s3_api]  
   s3_region = "WHATEVERREGION" # can be something simple like "bucket"
 
-* Addressing: Path-style
-* TLS Verify: ideally Verify
+- Addressing: Path-style
+- TLS Verify: ideally Verify
 
 Finally you can select your directory (bucket should show up correctly) and start syncing. Enjoy!
-
----
-
-If you like my work and would like to support it, feel free to make a donation of any amount in USDT (TRC-20 Network ONLY) to the following address:
-
-​`TKtyyfWBF7cympu2mELRNSEViooD65XEVs`​
-
-![usdt_address](/assets/images/usdt_address-20250505210352-ov0ohqk.jpg)
