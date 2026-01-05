@@ -62,6 +62,14 @@ layout: default
 
       {% if page.share %}{% include social-share.html %}{% endif %}
 
+      <div style="margin: 2em 0; padding: 1.5em; background: #222; border-radius: 8px; border-left: 4px solid #fca311;">
+        <h3 style="color: #fff; margin-top: 0; font-size: 1.1em;">Value 4 Value</h3>
+        <p style="color: #ccc; font-size: 0.9em; margin-bottom: 15px;">
+          If you found this helpful, consider sending some sats to keep the server running.
+        </p>
+        
+        {% include blink-widget.html container_id="blink-post-share-section" %}
+      </div>
       {% include post_pagination.html %}
     </div>
 
@@ -77,10 +85,10 @@ layout: default
     {% endif %}
   </article>
 
-  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
+  {% comment %}{% endcomment %}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     {% include page__related.html posts=site.related_posts %}
-  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
+  {% comment %}{% endcomment %}
   {% elsif page.id and page.related %}
     {% include page__related.html posts=site.posts %}
   {% endif %}
