@@ -18,37 +18,5 @@
         {{ words | divided_by: 200 | plus: 1 }} min read
       </span>
     {% endif %}
-
-    <span class="page__meta-sep"></span>
-    <span class="page__meta-views">
-      <i class="far fa-eye" aria-hidden="true"></i>
-      <span id="stats">0</span> views
-    </span>
-
-    <script>
-      (function() {
-        var r = new XMLHttpRequest();
-        r.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            try {
-              var data = JSON.parse(this.responseText);
-              if (data.count !== undefined) {
-                // Remove commas/spaces for a clean number
-                document.getElementById('stats').innerText = data.count.replace(/\s/g, '').replace(/,/g, '');
-              }
-            } catch(e) { 
-              document.getElementById('stats').innerText = '0'; 
-            }
-          }
-        };
-
-        // Normalize path: Removes .html so it matches the dashboard records
-        var path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
-        var url = 'https://signolabz.goatcounter.com/counter/' + encodeURIComponent(path) + '.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq';
-        
-        r.open('GET', url, true);
-        r.send();
-      })();
-    </script>
   </p>
 {% endif %}
