@@ -28,18 +28,30 @@
     <script>
       (function() {
         var r = new XMLHttpRequest();
-        r.addEventListener('load', function() {
-          try {
-            var data = JSON.parse(this.responseText);
-            // GoatCounter returns the count as a string
-            document.querySelector('#stats').innerText = data.count || '0';
-          } catch(e) { console.log("GC Error:", e); }
-        });
-        // This fetches the JSON data for the current path
-        var path = encodeURIComponent(location.pathname);
-        // REPLACE 'YOUR_TOKEN' WITH YOUR ACTUAL TOKEN
-        var url = 'https://signolabz.goatcounter.com/counter/' + path + '.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq';
-        r.open('GET', url);
+        r.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            try {
+              var data = JSON.parse(this.responseText);
+              if (data.count !== undefined) {
+                // Remove commas/spaces for a clean number
+                document.getElementById('stats').innerText = data.count.replace(/\s/g, '').replace(/,/g, '');
+              }
+            } catch(e) { 
+              document.getElementById('stats').innerText = '0'; 
+            }
+          }
+        };
+
+        /* PATH NORMALIZER: 
+           Removes '.html' and trailing slashes to ensure the request 
+           matches exactly what GoatCounter records in your dashboard.
+        */
+        var path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+        if (path === '') path = '/'; 
+        
+        var url = 'https://signolabz.goatcounter.com/counter/' + encodeURIComponent(path) + '.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq';
+        
+        r.open('GET', url, true);
         r.send();
       })();
     </script>
