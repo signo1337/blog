@@ -1,4 +1,3 @@
-
 {% assign document = post | default: page %}
 {% if document.read_time or document.show_date %}
   <p class="page__meta">
@@ -21,13 +20,28 @@
     {% endif %}
 
     <span class="page__meta-sep"></span>
-    <span class="page__meta-views" style="display: inline-flex; align-items: center;">
-      <i class="far fa-eye" aria-hidden="true" style="margin-right: 4px;"></i>
-      <iframe src="https://signolabz.goatcounter.com/counter/{{ document.url | url_encode }}.html?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq&hideui=1&no_branding=1&style=body{margin:0;padding:0;font-family:inherit;}" 
-              style="border:none; width: 100px; height: 1.2em; background: transparent; overflow: hidden;" 
-              scrolling="no" 
-              frameborder="0"
-              allowtransparency="true"></iframe>
+    <span class="page__meta-views">
+      <i class="far fa-eye" aria-hidden="true"></i>
+      <span id="stats">...</span> views
     </span>
+
+    <script>
+      (function() {
+        var r = new XMLHttpRequest();
+        r.addEventListener('load', function() {
+          try {
+            var data = JSON.parse(this.responseText);
+            // GoatCounter returns the count as a string
+            document.querySelector('#stats').innerText = data.count || '0';
+          } catch(e) { console.log("GC Error:", e); }
+        });
+        // This fetches the JSON data for the current path
+        var path = encodeURIComponent(location.pathname);
+        // REPLACE 'YOUR_TOKEN' WITH YOUR ACTUAL TOKEN
+        var url = 'https://signolabz.goatcounter.com/counter/' + path + '.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq';
+        r.open('GET', url);
+        r.send();
+      })();
+    </script>
   </p>
 {% endif %}
