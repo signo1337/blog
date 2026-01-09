@@ -29,25 +29,12 @@
     {% endif %}
 
     <span class="page__meta-sep"></span>
-    <span class="page__meta-views">
+    <span class="page__meta-views" style="display: inline-flex; align-items: center; gap: 4px;">
       <i class="far fa-eye" aria-hidden="true"></i>
-      <span id="stats">0</span> views
+      <iframe src="https://signolabz.goatcounter.com/counter/{{ document.url | url_encode }}.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq&hideui=1" 
+              style="border:none; width: 60px; height: 1.2em; overflow: hidden;" 
+              scrolling="no" 
+              frameborder="0"></iframe>
     </span>
-
-    <script>
-      var r = new XMLHttpRequest();
-      r.addEventListener('load', function() {
-        try {
-          var count = JSON.parse(this.responseText).count;
-          // Removes commas/formatting if you prefer raw numbers
-          document.querySelector('#stats').innerText = count.replace(/\s/g, '');
-        } catch(e) {
-          document.querySelector('#stats').innerText = '0';
-        }
-      });
-      // This fetches the count specifically for the current article's URL path
-      r.open('GET', 'https://signolabz.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json');
-      r.send();
-    </script>
     </p>
 {% endif %}
