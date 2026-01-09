@@ -33,7 +33,7 @@
             try {
               var data = JSON.parse(this.responseText);
               if (data.count !== undefined) {
-                // Remove commas/spaces for a clean number
+                // Formats the number by removing spaces or commas
                 document.getElementById('stats').innerText = data.count.replace(/\s/g, '').replace(/,/g, '');
               }
             } catch(e) { 
@@ -42,11 +42,9 @@
           }
         };
 
-        /* PATH NORMALIZER: 
-           Removes '.html' and trailing slashes to ensure the request 
-           matches exactly what GoatCounter records in your dashboard.
-        */
-        var path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+        // Normalizes the path (removes .html and trailing slashes) 
+        // to match GoatCounter's dashboard recording style
+        var path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
         if (path === '') path = '/'; 
         
         var url = 'https://signolabz.goatcounter.com/counter/' + encodeURIComponent(path) + '.json?access-token=6s4c4f686m6t272p259n2u45d6a3l2p552iq';
