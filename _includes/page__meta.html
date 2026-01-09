@@ -19,35 +19,38 @@
       </span>
     {% endif %}
 
+    {% assign stats_id = document.url | slugify | prepend: "stats-" %}
     <span class="page__meta-sep"></span>
     <span class="page__meta-views">
       <i class="far fa-eye" aria-hidden="true"></i>
-      <span id="stats">0</span> views
+      <span id="{{ stats_id }}">0</span> views
     </span>
 
     <script>
       (function() {
         var r = new XMLHttpRequest();
+        // Capture the specific URL for this individual post from Jekyll
+        var postPath = "{{ document.url }}"; 
+        var targetId = "{{ stats_id }}";
+
         r.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             try {
               var data = JSON.parse(this.responseText);
               if (data.count !== undefined) {
-                document.getElementById('stats').innerText = data.count.replace(/\s/g, '').replace(/,/g, '');
+                // Find the unique slot for THIS post and update it
+                document.getElementById(targetId).innerText = data.count.replace(/\s/g, '').replace(/,/g, '');
               }
             } catch(e) { 
-              console.log("GoatCounter parse error");
+              console.log("GoatCounter error for: " + postPath);
             }
           }
         };
 
-        /* MATCHING YOUR EXACT PATH: 
-           Dashboard stores: /post/blog.signolabz.com/post/name.html
+        /* EXACT MATCH LOGIC:
+           Matches your dashboard format: /post/blog.signolabz.com/post/name.html
         */
-        var currentPath = window.location.pathname; 
-        
-        // Ensure path ends in .html for the request to match your dashboard exactly
-        var formattedPath = currentPath;
+        var formattedPath = postPath;
         if (!formattedPath.endsWith('.html')) {
             formattedPath = formattedPath.replace(/\/$/, '') + '.html';
         }
