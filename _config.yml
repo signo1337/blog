@@ -105,7 +105,7 @@ social:
 
 # Analytics
 analytics:
-  provider: "custom"
+  provider: false
 
 # Site Author
 author:
